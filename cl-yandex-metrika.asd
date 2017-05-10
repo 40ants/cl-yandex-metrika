@@ -1,9 +1,8 @@
 (asdf:defsystem #:cl-yandex-metrika
-  :description "Describe cl-yandex-metrika here"
+  :description "A client library for metrika.yandex.ru"
   :author "Alexander Artemenko <svetlyak.40wt@gmail.com>"
   :license "BSD"
-  :depends-on (#:cl-strings
-               #:cl-ppcre
+  :depends-on (#:alexandria
                #:cl-interpol
                #:jonathan
                #:log4cl
