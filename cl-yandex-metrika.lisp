@@ -17,7 +17,7 @@
   "Yandex Metrika's counter id.")
 
 
-(defun hit (url &key params user-id)
+(defun hit (url &key params user-id (timeout 1))
   (unless *counter*
     (error "Please, set cl-yandex-metrika:*counter* variable"))
   (let* ((rn (random 1000000))
@@ -40,4 +40,7 @@
             (to-json params)))
 
     (log:debug "Sending hit to" endpoint "with" content)
-    (dex:post endpoint :content content :timeout 1)))
+    (dex:post endpoint :content content
+                       :read-timeout timeout
+                       :connect-timeout timeout)
+    (values)))
